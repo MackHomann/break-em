@@ -93,7 +93,6 @@ public:
 		};
 
 		// Spawning starting ball
-		float spawnAngle = -0.5f;
 		Balls.push_back({ {10.0f, 25.0f} , {cos(1.5f),  sin(1.5f)} });
 
 		return true;
@@ -288,6 +287,10 @@ public:
 		// Moving player
 		if (GetKey(olc::Key::LEFT).bHeld) playerPos -= playerSpeed * fElapsedTime;
 		if (GetKey(olc::Key::RIGHT).bHeld) playerPos += playerSpeed * fElapsedTime;
+
+		if (GetKey(olc::Key::SPACE).bPressed) {
+			Balls.push_back({ {10.0f, 22.0f} , {cos(1.5f),  sin(1.5f)} });
+		}
 
 		playerPos = std::clamp(playerPos, playerWidth, 20.f - playerWidth);
 		//End
